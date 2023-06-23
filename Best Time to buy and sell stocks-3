@@ -1,0 +1,48 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int mpist = 0;
+        int leaststsf = prices[0];
+        int dpl[prices.size()];
+
+        for(int i=1 ; i<prices.size() ; i++){
+            if(prices[i]<leaststsf){
+                leaststsf=prices[i];
+            }
+
+            mpist=prices[i]-leaststsf ;
+            if(mpist>dpl[i-1]){
+                dpl[i]=mpist;
+            }else{
+                dpl[i]=dpl[i-1];
+            }
+        }
+        
+        int mpibt=0;
+        int maxat=prices[prices.size()-1];
+        int dpr[prices.size()];
+
+        for(int i=prices.size()-2 ; i>=0 ; i--){
+            if(prices[i]>maxat){
+                maxat=prices[i];
+            }
+            
+            mpibt=maxat-prices[i];
+            if(mpibt>dpr[i+1]){
+                dpr[i]=mpibt;
+            }else{
+                dpr[i]=dpr[i+1];
+            }
+        }
+        
+
+        int op=0;
+        for(int i=0; i<prices.size() ; i++){
+            if(dpl[i]+dpr[i] > op){
+                op=dpl[i]+dpr[i];
+            }
+        }
+
+        return op; 
+    }
+};
