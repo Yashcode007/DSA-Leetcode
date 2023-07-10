@@ -1,0 +1,22 @@
+#define dataType pair<int,pair<int,int>>
+vector<int> fun(
+priority_queue<dataType,vector<dataType>,greater<dataType>> pq;
+for(int i=0 ; i<k ; i++){
+pq.push(A[i][0],{i,0}};
+}
+
+while(!pq.empty()){
+dataType smallestRightNow=pq.top();
+
+int val=smallestRightNow.first;
+int row=smallestRightNow.second.first;
+int col=smallestRightNow.second.second;
+
+ans.push_back(val);
+if(col+1<N){
+dataType toPush={A[row][col+1],{row,col+1}};
+pq.push(toPush);
+}
+}
+
+return ans; 
