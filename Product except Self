@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) { // [1,2,3,4]
+     int n=nums.size() ; //n=4
+     int left[n];
+     int right[n+1] ;
+        int ans[n];
+     int lpro=1 ; int rpro=1 ;
+        for(int i=0; i <n ; i++){
+            lpro=lpro*nums[i];
+            left[i]=lpro;
+        }
+        
+        for(int j=n-1 ; j>=0 ; j--){
+            rpro=rpro*nums[j];
+            right[j]=rpro ;
+        }
+        right[n]=1;
+        int pro=1 ;
+        for(int i=1 ; i<n ; i++){
+            pro=pro*nums[i];
+        }
+        ans[0]=pro;
+        
+        for(int i=1 ; i<n; i++){
+            ans[i]=left[i-1]*right[i+1];
+        }
+        
+        //ans=[24,12,8,6]
+        vector<int> fans ;
+        for(int i=0 ; i<n ; i++){
+            fans.push_back(ans[i]);
+        }
+        
+        return fans; 
+        
+    }
+};
