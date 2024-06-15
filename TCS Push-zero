@@ -1,0 +1,41 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+#include<bits/stdc++.h>
+using namespace std;
+
+void pushzero(vector<int> &v, int n){
+    int k=0;int i=0 ;
+    while(i<n){
+        if(v[i]==0){
+            i++; 
+        }
+        else{
+            v[k]=v[i];
+            i++; k++; 
+        }
+    }
+    
+    for(k ; k<n ; k++){
+        v[k+1]=0;
+    }
+}
+
+int main(){
+    int n;cin>>n;
+    vector<int> v;
+    for(int i=0 ; i<n ; i++){   //[4,5,0,1,9,0,5,0] 
+        int x ; cin>>x ;
+        v.push_back(x);
+    }
+    pushzero(v,n);
+    
+    for(int i=0 ; i<n ; i++){
+        cout<<v[i]<<" ";
+    }
+    return 0; 
+}
