@@ -10,8 +10,9 @@ public:
             if(it->second==1){
                 return it->first; 
             }
-        }
 
+}
+//Return 
 
         return 0; 
     }
