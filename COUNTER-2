@@ -2,6 +2,8 @@
 //  * @param {integer} init
 //  * @return { increment: Function, decrement: Function, reset: Function }
  */
+
+// This is a javascript code not written in C++. Please remember this and try again this question
 var createCounter = function(init) {
     let count = init;
     function increment(){
