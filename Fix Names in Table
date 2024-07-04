@@ -1,0 +1,10 @@
+import pandas as pd
+
+def fix_names(users: pd.DataFrame) -> pd.DataFrame:
+    for index,rows in fix_names.iterrows():
+        if(index==0):
+            rows["name"][0].upper()
+        else:
+            rows["name"][index].lower()
+    
+    return fix_names
