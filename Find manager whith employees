@@ -1,0 +1,15 @@
+import pandas as pd
+
+def find_managers(employee: pd.DataFrame) -> pd.DataFrame:
+    t2 = employee.groupby("managerId").count()
+    t6 = t2[t2.name >= 5]
+    
+    if t6.empty:
+        return None
+    
+    t6.rename(columns={'name':'no'}, inplace=True)
+    t3 = pd.merge(employee, t6, left_on="id", right_on="managerId")
+    t4 = t3.iloc[:, 1]
+    t5 = pd.DataFrame(t4, columns=['name'])
+    
+    return t5
