@@ -1,0 +1,14 @@
+def salary_stats(value):
+    if value < 10000 :
+        return "Very Low"
+    elif 10000<= value < 25000:
+        return "Low"
+    elif 25000<= value < 40000:
+        return "average"
+    elif 40000 <= value < 50000:
+        return "better"
+    elif value>=50000:
+        return "very good"
+    
+df['salary_stats']= df['salary'].map(salary_stats)
+display(df.head())
