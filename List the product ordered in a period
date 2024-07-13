@@ -1,0 +1,20 @@
+# Write your MySQL query statement below
+with cte1 as
+(
+select product_id, unit 
+from Orders
+where date_format(order_date,"%m") = 02 and date_format(order_date,"%Y") = 2020
+),
+
+cte2 as 
+(
+select Products.product_name as "product_name", sum(cte1.unit) as "unit"
+from Products 
+join cte1 
+on Products.product_id = cte1.product_id
+group by cte1.product_id
+) 
+
+select product_name , unit 
+from cte2 
+where unit>=100
