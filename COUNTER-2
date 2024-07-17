@@ -20,4 +20,4 @@ var createCounter = function(init) {
     }
     return { increment, decrement, reset };
 };
-    
+// This is the Javascript code written . It is for revision purpose
