@@ -8,3 +8,5 @@ def fix_names(users: pd.DataFrame) -> pd.DataFrame:
             rows["name"][index].lower()
     
     return fix_names
+
+// This is a pandas code . Will do it more and revise again 
