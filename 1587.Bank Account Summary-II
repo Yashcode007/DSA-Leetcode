@@ -1,0 +1,12 @@
+# Write your MySQL query statement below
+with cte1 as (
+select Users.account as "account_no", Users.name as "name",  Transactions.amount as "amount_on"
+from Users 
+join Transactions 
+on Users.account = Transactions.account 
+)
+
+select name , sum(amount_on) as "balance"
+from cte1 
+group by account_no
+having balance>10000
