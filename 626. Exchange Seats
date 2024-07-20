@@ -1,0 +1,19 @@
+# Write your MySQL query statement below
+
+with cte1 as (
+select s1.id as "id" , s1.student as "student" ,s3.id as "p_id" , s3.student as "p_student", s2.id as "n_id", s2.student as "n_student" 
+from Seat s1 
+left join Seat s2
+on s1.id= s2.id - 1
+left join Seat s3
+on s1.id =s3.id +1
+) 
+
+select id , case 
+    when cte1.id % 2 <> 0 and cte1.n_id is not null then  cte1.n_student 
+    when cte1.id%2 = 0 and cte1.p_id is not null then cte1.p_student 
+    else cte1.student
+    end as student  
+from cte1 
+
+
