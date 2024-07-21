@@ -1,0 +1,19 @@
+with data as 
+(Select *, datediff('2019-08-16', change_date) as diff 
+from Products)
+
+
+select T.product_id, Ifnull(sum(T.price),10) as Price 
+from 
+(Select data.*, d2.min_diff, 
+case when data.diff=d2.min_diff then new_price
+when data.diff<>d2.min_diff then 0
+else null end as Price 
+from data 
+left join
+(select product_id, min(diff) as min_diff
+from data 
+where diff>=0 
+group by product_id) d2
+on data.product_id = d2.product_id) T
+group by T.product_id; 
