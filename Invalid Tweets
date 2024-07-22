@@ -1,0 +1,12 @@
+import pandas as pd
+
+def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
+    arr=[]
+    for index,row in tweets.iterrows():
+        if(len(row['content']) > 15):
+           arr.append(row['tweet_id'])
+    
+    result = pd.DataFrame(arr, columns=['tweet_id'])
+    return result 
+
+    
