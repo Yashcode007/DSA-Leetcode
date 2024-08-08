@@ -6,6 +6,8 @@ join Transactions
 on Users.account = Transactions.account 
 )
 
+
+
 select name , sum(amount_on) as "balance"
 from cte1 
 group by account_no
